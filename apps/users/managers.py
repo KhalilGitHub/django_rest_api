@@ -35,7 +35,7 @@ class CustomUserManager(BaseUserManager):
         user.set_password(password)
         extra_fields.setdefault("is_staff", False)
         extra_fields.setdefault("is_superuser", False)
-        user.save(ussing=self._db)
+        user.save(using=self._db)
         return user
         
     def create_superuser(self, username, first_name, last_name, email, password, **extra_fields,):
@@ -55,5 +55,5 @@ class CustomUserManager(BaseUserManager):
             raise ValueError(_('Valid email address is required...!')) 
 
         user = self.create_user(username, first_name, last_name, email, password, **extra_fields,)
-        user.save(ussing=self._db)
+        user.save(using=self._db)
         return user
